@@ -14,7 +14,7 @@ fn main() {
             saved_team.push(elf)
         }
 
-        // creates pair sums, outer is lower index
+        // creates pair sums, outer -> next-to-outer -> center
         for _ in 0..3 {
             pair_sums.push(get_outer_pair_sum(&team));
             pop_pair(&mut team);
