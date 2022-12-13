@@ -22,6 +22,7 @@ fn main() {
 
         if pair_sums[0] < pair_sums[1] && pair_sums[1] < pair_sums[2] {
             println!("Optimal team found at: {index} with team: {saved_team:?}")
+            // Optimal team found at: 462 with team: ['2', '3', '7', '5', '8', '1']
         }
     }
 }
