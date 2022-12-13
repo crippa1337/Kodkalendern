@@ -7,8 +7,6 @@ fn main() {
     for line in input.lines() {
         let vec: Vec<&str> = line.split(", ").collect();
         for (char1, char2) in vec[0].chars().zip(vec[1].chars()) {
-            println!("{:?}", vec);
-            println!("char 1: {char1}\nchar 2: {char2}");
             if char1 != char2 {
                 answer += 1;
             }
