@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let input = fs::read_to_string("input").unwrap();
+    let input = fs::read_to_string("dag_11_input.txt").unwrap();
     let mut answer: u32 = 0;
 
     for line in input.lines() {
@@ -14,5 +14,5 @@ fn main() {
     }
 
     println!("{answer}");
-    // 856 (Input is incorrect)
+    // 648
 }
