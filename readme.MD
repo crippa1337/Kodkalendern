@@ -1,2 +1,2 @@
-# Solutions to Kodkalendern 2022
+# Solutions to Kodkalendern
 ### [Kodkalendern](https://ungaprogrammerare.se/kodkalender/)
