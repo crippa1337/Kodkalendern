@@ -20,38 +20,17 @@ fn main() {
 
     let answer = check_talkers(after_santa);
     println!("{answer}")
+    // 510
 }
 
 fn check_talkers(queue: Vec<char>) -> u32 {
-    let mut answer: u32 = 0;
+    let mut talkers = 0;
     for (index, _) in queue.iter().enumerate() {
-        let left: char;
-        let middle: char;
-        let right: char;
-
-        // Left
-        match queue.get(index - 1) {
-            Some(_) => left = *queue.get(index - 1).unwrap(),
-            None => left = ' ',
-        }
-
-        // Middle
-        middle = *queue.get(index).unwrap();
-
-        // Right
-        match queue.get(index + 1) {
-            Some(_) => right = *queue.get(index + 1).unwrap(),
-            None => right = ' ',
-        }
-
-        if left == '<' && middle == '>' {
-            answer += 1;
-        }
-
-        if middle == '<' && right == '>' {
-            answer += 1;
+        if queue[index] == '<' && queue[index + 1] == '>' {
+            // Add a pair of talkers
+            talkers += 2
         }
     }
 
-    return answer;
+    return talkers;
 }
