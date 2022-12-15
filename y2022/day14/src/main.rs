@@ -1,10 +1,32 @@
-use std::{collections::HashMap, fs};
+use std::{
+    collections::{BTreeSet, HashMap},
+    fs,
+};
 
 fn main() {
     let input = fs::read_to_string("input").unwrap();
+    let mut all_circums: BTreeSet<u32> = BTreeSet::new();
+
+    for line in input.lines() {
+        let circum: u32 = line
+            .split(", ")
+            .map(|x| x.parse::<u32>().unwrap())
+            .fold(0, |accum, num| (num * 2) + accum);
+
+        if !all_circums.insert(circum) {
+            all_circums.remove(&circum);
+        }
+    }
+
+    println!("The elf with no friend: {all_circums:?}")
+    // 152
+}
+
+fn old_sol() {
+    let input = fs::read_to_string("input").unwrap();
     let mut all_circums: HashMap<u32, u32> = HashMap::new();
 
-    for (index, line) in input.lines().enumerate() {
+    for line in input.lines() {
         let circum: u32 = line
             .split(", ")
             .map(|x| x.parse::<u32>().unwrap())
@@ -13,12 +35,14 @@ fn main() {
         *all_circums.entry(circum).or_default() += 1;
     }
 
-    let max = all_products.iter().fold((&0u32, &0u32), |curr_max, prod| {
-        if prod.1 > curr_max.1 {
-            return prod;
+    let no_pair = all_circums.iter().fold((&0u32, &0u32), |no_pair, pair| {
+        if no_pair.1 % 2 != 0 {
+            return no_pair;
         }
-        return curr_max;
+        return pair;
     });
 
-    println!("{all_circums:?} and {}", all_circums.len())
+    // Elf key
+    println!("The elf with no pair: {}", no_pair.0)
+    // 152
 }
